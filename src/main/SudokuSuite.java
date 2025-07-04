@@ -1,6 +1,6 @@
 package main;
 
-import Window.*;
+import ui.*;
 
 public class SudokuSuite {
     public static void main(String[] args) throws Exception {
