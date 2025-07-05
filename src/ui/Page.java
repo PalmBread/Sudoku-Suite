@@ -4,8 +4,13 @@ import javax.swing.JPanel;
 
 public class Page {
     public JPanel panel = new JPanel();
+    private Window window;
 
-    public Page(String name, Window window) {
-        window.addPage(name, this);
+    public Page(Window window) {
+        this.window = window;
+    }
+
+    public void display() {
+        window.displayPage(this);
     }
 }
