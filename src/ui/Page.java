@@ -22,8 +22,7 @@ public class Page {
     }
     
     public Page(Window window, Dimension size, LayoutManager layout) {
-        this.panel = new JPanel(layout);
-        this.window = window;
+        this(window, size);
         this.size = size;
     }
 
