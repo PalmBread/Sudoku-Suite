@@ -7,13 +7,16 @@ import javax.swing.JPanel;
 
 public class Page {
     public JPanel panel;
+    public Dimension size;
     private Window window;
-    private Dimension size;
 
     public Page(Window window, Dimension size) {
         this.panel = new JPanel();
         this.window = window;
         this.size = size;
+
+        window.panel.add(this.panel, window.panelCount);
+        window.panelCount += 1;
     }
     
     public Page(Window window, Dimension size, LayoutManager layout) {
@@ -24,6 +27,5 @@ public class Page {
 
     public void display() {
         window.displayPage(this);
-        window.setSize(this.size);
     }
 }

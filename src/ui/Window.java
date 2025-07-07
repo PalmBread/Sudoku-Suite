@@ -4,11 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
 
 public class Window {
     private JFrame frame = new JFrame("Sudoku Suite");
-    JPanel panel = new JPanel(new CardLayout());
+    private CardLayout layout = new CardLayout();
+    JPanel panel = new JPanel(layout);
+    public int panelCount = 0;
 
     public Window() {
         frame.add(this.panel);
@@ -20,11 +21,8 @@ public class Window {
     }
 
     public void displayPage(Page page) {
-        this.panel.add(page.panel);
-    }
-
-    public void setSize(Dimension size) {
-        frame.setSize(size);
+        frame.setSize(page.size);
         frame.setLocationRelativeTo(null);
+        layout.show(page.panel, null);
     }
 }
