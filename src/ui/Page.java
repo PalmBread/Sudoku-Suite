@@ -8,15 +8,17 @@ import javax.swing.JPanel;
 public class Page {
     public JPanel panel;
     public Dimension size;
+    public String index;
     private Window window;
 
     public Page(Window window, Dimension size) {
         this.panel = new JPanel();
         this.window = window;
         this.size = size;
-
-        window.panel.add(this.panel, window.panelCount);
+        this.index = String.valueOf(window.panelCount);
         window.panelCount += 1;
+        
+        window.panel.add(this.panel, this.index);
     }
     
     public Page(Window window, Dimension size, LayoutManager layout) {

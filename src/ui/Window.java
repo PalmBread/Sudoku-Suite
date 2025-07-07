@@ -23,6 +23,6 @@ public class Window {
     public void displayPage(Page page) {
         frame.setSize(page.size);
         frame.setLocationRelativeTo(null);
-        layout.show(page.panel, null);
+        layout.show(this.panel, page.index);
     }
 }
