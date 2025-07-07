@@ -1,12 +1,5 @@
 package main;
 
-import java.awt.Dimension;
-import java.awt.Font;
-
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-
 import pages.GeneratorPage;
 import pages.MenuPage;
 import pages.SolverPage;
