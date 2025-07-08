@@ -9,12 +9,11 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import ui.Page;
 
 public class SolverPage extends Page {
     public JButton BoardButtons[] = new JButton[81];
-    public static String activeNumber = null;
+    public static String activeNumber = "";
 
     public SolverPage(ui.Window window) {
         super(window, new Dimension(730, 590));
@@ -47,7 +46,7 @@ public class SolverPage extends Page {
         uiPanel.add(_panel);
         panel.setPreferredSize(new Dimension(15, 1));
         
-        JPanel keyPanel = new JPanel(new GridLayout(3, 4, 5, 5));
+        JPanel keyPanel = new JPanel(new GridLayout(4, 3, 5, 5));
         uiPanel.add(keyPanel);
 
         for (int i = 1; i < 10; i++) {
@@ -56,6 +55,15 @@ public class SolverPage extends Page {
             button.setPreferredSize(new Dimension(50, 50));
             button.setFont(new Font("Arial", Font.BOLD, 20));
             button.addActionListener(SolverPage::KeypadListener);
+        }
+
+        String[] texStrings = {"<", "-", "X"};
+        for (int i = 0; i < 3; i++) {
+            JButton button = new JButton(texStrings[i]);
+            keyPanel.add(button);
+            button.setPreferredSize(new Dimension(50, 50));
+            button.setFont(new Font("Arial", Font.BOLD, 20));
+            button.addActionListener(SolverPage::KeypadListener2);
         }
     }
 
@@ -70,5 +78,23 @@ public class SolverPage extends Page {
     public static void KeypadListener(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         activeNumber = button.getText();
+    }
+
+    public static void KeypadListener2(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
+        switch (button.getText()) {
+            case "<":
+                main.SudokuSuite.MenuPage.display();
+                break;
+
+            case "-":
+                activeNumber = "";
+                break;
+
+            case "X":
+                main.SudokuSuite.SolverPage = new SolverPage(main.SudokuSuite.window);
+                main.SudokuSuite.SolverPage.display();
+                break;
+        }
     }
 }
