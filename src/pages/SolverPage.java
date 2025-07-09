@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import ui.Page;
 
 public class SolverPage extends Page {
-    public JButton BoardButtons[] = new JButton[81];
     public static String activeNumber = "";
+    public static int[] Board = new int[81];
 
     public SolverPage(ui.Window window) {
         super(window, new Dimension(730, 590));
@@ -39,7 +39,6 @@ public class SolverPage extends Page {
             button.setFont(new Font("Arial", Font.BOLD, 20));
             button.putClientProperty("index", i);
             button.addActionListener(SolverPage::BoardListener);
-            BoardButtons[i] = button;
         }
 
         JPanel _panel = new JPanel();
@@ -72,6 +71,8 @@ public class SolverPage extends Page {
 
         if (activeNumber != null) {
             button.setText(activeNumber);
+            int index = (int) button.getClientProperty("index");
+            Board[index] = Integer.valueOf(activeNumber);
         }
     }
 
