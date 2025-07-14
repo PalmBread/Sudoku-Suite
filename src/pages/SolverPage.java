@@ -69,11 +69,9 @@ public class SolverPage extends Page {
     public static void BoardListener(ActionEvent e) {
         JButton button = (JButton) e.getSource();
 
-        if (activeNumber != null) {
-            button.setText(activeNumber);
-            int index = (int) button.getClientProperty("index");
-            Board[index] = Integer.valueOf(activeNumber);
-        }
+        button.setText(activeNumber);
+        int index = (int) button.getClientProperty("index");
+        Board[index] = activeNumber.isEmpty() ? 0 : Integer.valueOf(activeNumber);
     }
 
     public static void KeypadListener(ActionEvent e) {

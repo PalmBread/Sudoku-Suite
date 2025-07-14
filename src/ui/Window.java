@@ -13,6 +13,7 @@ public class Window {
 
     public Window() {
         frame.add(this.panel);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
