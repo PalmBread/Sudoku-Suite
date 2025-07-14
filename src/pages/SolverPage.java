@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,25 +46,40 @@ public class SolverPage extends Page {
         uiPanel.add(_panel);
         panel.setPreferredSize(new Dimension(15, 1));
         
-        JPanel keyPanel = new JPanel(new GridLayout(4, 3, 5, 5));
+        JPanel keyPanel = new JPanel();
+        keyPanel.setLayout(new BoxLayout(keyPanel, BoxLayout.Y_AXIS));
         uiPanel.add(keyPanel);
+
+        JPanel keys = new JPanel(new GridLayout(4, 3, 5, 5));
+        keys.setMaximumSize(new Dimension(160, 215));
+        keyPanel.add(keys);
 
         for (int i = 1; i < 10; i++) {
             JButton button = new JButton(String.valueOf(i));
-            keyPanel.add(button);
+            keys.add(button);
             button.setPreferredSize(new Dimension(50, 50));
             button.setFont(new Font("Arial", Font.BOLD, 20));
             button.addActionListener(SolverPage::KeypadListener);
+            button.setFocusable(false);
         }
 
         String[] texStrings = {"<", "-", "X"};
         for (int i = 0; i < 3; i++) {
             JButton button = new JButton(texStrings[i]);
-            keyPanel.add(button);
+            keys.add(button);
             button.setPreferredSize(new Dimension(50, 50));
             button.setFont(new Font("Arial", Font.BOLD, 20));
             button.addActionListener(SolverPage::KeypadListener2);
+            button.setFocusable(false);
         }
+
+        JPanel solvePanel = new JPanel();
+        keyPanel.add(solvePanel);
+
+        JButton solveButton = new JButton("Solve");
+        solvePanel.add(solveButton);
+        solveButton.setPreferredSize(new Dimension(160, 50));
+        solveButton.setFont(new Font("Arial", Font.BOLD, 20));
     }
 
     public static void BoardListener(ActionEvent e) {
