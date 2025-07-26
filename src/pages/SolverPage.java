@@ -10,11 +10,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import core.SudokuBoard;
 import ui.Page;
 
 public class SolverPage extends Page {
     public static String activeNumber = "";
-    public static int[] Board = new int[81];
+    //public static int[] Board = new int[81];
+    public static SudokuBoard Board = new SudokuBoard();
 
     public SolverPage(ui.Window window) {
         super(window, new Dimension(730, 590));
@@ -80,6 +83,7 @@ public class SolverPage extends Page {
         solvePanel.add(solveButton);
         solveButton.setPreferredSize(new Dimension(160, 50));
         solveButton.setFont(new Font("Arial", Font.BOLD, 20));
+        solveButton.addActionListener(SolverPage::KeypadListener2);
     }
 
     public static void BoardListener(ActionEvent e) {
@@ -87,7 +91,7 @@ public class SolverPage extends Page {
 
         button.setText(activeNumber);
         int index = (int) button.getClientProperty("index");
-        Board[index] = activeNumber.isEmpty() ? 0 : Integer.valueOf(activeNumber);
+        Board.set(index, activeNumber.isEmpty() ? 0 : Integer.valueOf(activeNumber));
     }
 
     public static void KeypadListener(ActionEvent e) {
@@ -109,6 +113,10 @@ public class SolverPage extends Page {
             case "X":
                 main.SudokuSuite.SolverPage = new SolverPage(main.SudokuSuite.window);
                 main.SudokuSuite.SolverPage.display();
+                break;
+
+            case "Solve":
+                core.SudokuSolver.solve(Board);
                 break;
         }
     }
