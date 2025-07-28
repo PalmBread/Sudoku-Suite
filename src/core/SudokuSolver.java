@@ -24,19 +24,7 @@ public class SudokuSolver {
             }
             board[i].add(Board.get(i));
         }
-
-        SudokuSolver.print(board);
     }
-
-    public static void print(SudokuBoard board) {
-    for (int row = 0; row < 9; row++) {
-        for (int col = 0; col < 9; col++) {
-            int value = board.get2d(row, col);
-            System.out.print((value == 0 ? "." : value) + " ");
-        }
-        System.out.println();
-    }
-}
 
     private static boolean moduleCheck(SudokuBoard Board, int index, int value) {
         int a = (index / 3) % 3;

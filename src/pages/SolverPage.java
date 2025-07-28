@@ -16,7 +16,6 @@ import ui.Page;
 
 public class SolverPage extends Page {
     public static String activeNumber = "";
-    //public static int[] Board = new int[81];
     public static SudokuBoard Board = new SudokuBoard();
 
     public SolverPage(ui.Window window) {
