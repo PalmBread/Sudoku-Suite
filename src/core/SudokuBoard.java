@@ -38,13 +38,13 @@ public class SudokuBoard {
         return this.Board[x * 9 + y];
     }
 
-    public static void print(SudokuBoard board) {
+    public void print() {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
-                int value = board.get2d(row, col);
+                int value = this.get2d(row, col);
                 System.out.print((value == 0 ? "." : value) + " ");
             }
-        System.out.println();
+            System.out.println();
         }
     }
 }
