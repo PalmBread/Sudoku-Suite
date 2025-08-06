@@ -47,4 +47,11 @@ public class SudokuBoard {
             System.out.println();
         }
     }
+
+    public void union(SudokuBoard Board) {
+        for (int i = 0; i < 81; i++) {
+            if (this.get(i) == 0) { continue; }
+            this.set(i, Board.get(i));
+        }
+    }
 }
